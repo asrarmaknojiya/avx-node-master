@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package com.avx.avx_grpc_service;
+
+option java_multiple_files = true;
+option java_package = "com.avx.avx_grpc_service";
+option java_outer_classname = "VehicleServiceProto";
+
+import "google/protobuf/struct.proto";
+
+
+service VehicleService {
+    rpc filterVehicle(FilterVehicleRequest) returns (google.protobuf.Struct) {}
+    rpc getHomePageVehicles(HomePageVehiclesRequest) returns (google.protobuf.Struct) {}
+}
+
+message FilterVehicleRequest {
+  int64 userId = 1;
+  string vehicleType = 2;
+  string vehicleSubType = 3;
+  int64 makerId = 4;
+  int64 modelId = 5;
+  int64 variantId = 6;
+  int32 mfgYear = 7;
+  string fuelType = 8;
+  string transmissionType = 9;
+  int64 minPrice = 10;
+  int64 maxPrice = 11;
+
+  int32 pageNumber = 12;
+  int32 size = 13;
+  string sortBy = 14;
+  string sortDirection = 15;
+}
+
+message HomePageVehiclesRequest {
+  int64 userId = 1;
+
+  int32 pageNumber = 2;
+  int32 size = 3;
+  string sortBy = 4;
+  string sortDirection = 5;
+}
